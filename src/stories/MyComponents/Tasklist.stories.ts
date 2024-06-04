@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { TaskList, TaskListProps } from './Tasklist'
-import { fn } from '@storybook/test'
 
 const meta: Meta<typeof TaskList> = {
     title: 'TaskList',
