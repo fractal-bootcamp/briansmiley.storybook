@@ -1,14 +1,39 @@
-import "../../index.css"
-import Task, {TaskProps} from './Task'
+import "../../index.css";
+import Task, { TaskProps } from "./Task";
+import { useState } from "react";
 
 export type TaskListProps = {
-    tasks: TaskProps[]
-}
+  tasks: Omit<TaskProps, "toggleFunction">[];
+};
 
-export const TaskList = ({tasks}:TaskListProps) => {
-    return (
-        <div>
-            {tasks.map(task => <Task {...task} key={task.id}/>)}
-        </div>
-    )
-}
+export const TaskList = ({ tasks }: TaskListProps) => {
+  const [taskList, setTaskList] = useState(tasks);
+  // const toggleCompleted = (t: TaskProps) => () => {
+  //     setTaskList(taskList.map( task =>
+  //         task == t ?
+  //             Object.assign({},t,{completed: !t.completed})
+  //     ))}
+
+  const toggleCompleted = (taskId: string) => {
+    const oldTask = taskList.find(task => task.id === taskId);
+    if (!oldTask) return;
+    const newTask = { ...oldTask, completed: !oldTask.completed };
+    const newTaskList = taskList.map(task =>
+      task.id === taskId ? newTask : task
+    );
+
+    setTaskList(newTaskList);
+  };
+
+  return (
+    <div className="flex flex-col gap-4">
+      {taskList.map(task => (
+        <Task
+          {...task}
+          key={task.id}
+          toggleFunction={() => toggleCompleted(task.id)}
+        />
+      ))}
+    </div>
+  );
+};
