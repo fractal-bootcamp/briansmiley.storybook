@@ -1,6 +1,6 @@
 import "../../index.css";
 import Task, { TaskProps } from "./Task";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export type TaskListProps = {
   tasks: Omit<TaskProps, "toggleFunction">[];
@@ -23,7 +23,15 @@ export const TaskList = ({ tasks }: TaskListProps) => {
     );
 
     setTaskList(newTaskList);
-  };
+};
+
+const sortTaskList = () => {
+    const oldTaskList = [...taskList]
+    const completedTasks = oldTaskList.filter(task => task.completed);
+    const uncompletedTasks = oldTaskList.filter(task => !task.completed);
+    setTaskList(uncompletedTasks.concat(completedTasks));
+}
+useEffect(sortTaskList, [taskList]);
 
   return (
     <div className="flex flex-col gap-4">
