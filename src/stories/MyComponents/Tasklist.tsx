@@ -2,6 +2,7 @@ import "../../index.css"
 
 export type TaskProps = {
     name: string,
+    key: string,
     description: string,
     completed: boolean,
 }
