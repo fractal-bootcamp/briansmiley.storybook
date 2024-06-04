@@ -22,16 +22,15 @@ export const TaskList = ({ tasks }: TaskListProps) => {
       task.id === taskId ? newTask : task
     );
 
-    setTaskList(newTaskList);
+    const sortedTaskList = sortByCompletion(newTaskList);
+    setTaskList(sortedTaskList);
 };
 
-const sortTaskList = () => {
-    const oldTaskList = [...taskList]
-    const completedTasks = oldTaskList.filter(task => task.completed);
-    const uncompletedTasks = oldTaskList.filter(task => !task.completed);
-    setTaskList(uncompletedTasks.concat(completedTasks));
+const sortByCompletion = (list: Omit<TaskProps, "toggleFunction">[]) => {
+    const completedTasks = list.filter(task => task.completed);
+    const uncompletedTasks = list.filter(task => !task.completed);
+    return uncompletedTasks.concat(completedTasks)
 }
-useEffect(sortTaskList, [taskList]);
 
   return (
     <div className="flex flex-col gap-4">
