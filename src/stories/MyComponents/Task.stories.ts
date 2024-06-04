@@ -1,18 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import Task, {TaskProps} from './Task'
+import Task, {TaskProps, withController} from './Task'
+import { ComponentProps } from 'react'
 
-const meta: Meta<typeof Task> = {
+const meta: Meta<UncontrolledTask> = {
     title: 'Task',
-    component: Task
+    component: withController(Task)
 }
 
 export default meta
 
 type Story = StoryObj<typeof meta>
-const toggleComplete = (task: TaskProps) => () => {
-    task.completed = !task.completed
-}
-const fakeTasks: TaskProps[] = [
+
+type UncontrolledTask = ReturnType<typeof withController>
+
+type UncontrolledTaskProps = ComponentProps<UncontrolledTask>
+
+const fakeTasks: UncontrolledTaskProps[] = [
         {
             name: 'first task',
             id: "1",
