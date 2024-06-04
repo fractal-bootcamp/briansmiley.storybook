@@ -1,17 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { TaskList, TaskListProps } from './Tasklist'
+import Task, {TaskProps} from './Task'
 
-const meta: Meta<typeof TaskList> = {
-    title: 'TaskList',
-    component: TaskList
+const meta: Meta<typeof Task> = {
+    title: 'Task',
+    component: Task
 }
 
 export default meta
 
 type Story = StoryObj<typeof meta>
 
-const fakeTasks: TaskListProps = {
-    tasks: [
+const fakeTasks: TaskProps[] = [
         {
             name: 'first task',
             id: "1",
@@ -25,9 +24,8 @@ const fakeTasks: TaskListProps = {
             completed: true,
         }
     ]
-}
 
 export const Primary: Story = {
-    args: fakeTasks
+    args: fakeTasks[0]
 }
 
