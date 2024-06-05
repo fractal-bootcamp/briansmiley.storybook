@@ -20,7 +20,6 @@ type MessageProps = {
 export type MessageThreadProps = Message[]
 
 const Message = ({message, isFirst, isLast}: MessageProps) => {
-    console.log(isFirst, isLast);
     const {sender, content, timestamp} = message
     const bubbleColor = sender.isCurrentUser ? 'bg-[#74C2FF]' : 'bg-[#D8D8D8]'
     let sidesToRound = []
@@ -68,7 +67,6 @@ const MessageThread = ({messages} : {messages: MessageThreadProps}) => {
                 isLast = true;
         return {message, isFirst, isLast}
     })
-    console.log(enhancedMessages)
     return (
         <div>
             {enhancedMessages.map( enhancedMessage => {
