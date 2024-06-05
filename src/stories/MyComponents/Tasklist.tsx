@@ -1,6 +1,6 @@
 import "../../index.css";
 import Task, { TaskProps } from "./Task";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export type TaskListProps = {
   tasks: Omit<TaskProps, "toggleFunction">[];
@@ -36,9 +36,9 @@ const sortByCompletion = (list: Omit<TaskProps, "toggleFunction">[]) => {
     <div className="flex flex-col gap-4">
       {taskList.map(task => (
         <Task
-          {...task}
-          key={task.id}
-          toggleFunction={() => toggleCompleted(task.id)}
+        {...task}
+        key={task.id}
+        toggleFunction={() => toggleCompleted(task.id)}
         />
       ))}
     </div>
