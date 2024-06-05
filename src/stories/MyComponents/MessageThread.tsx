@@ -45,12 +45,20 @@ const Message = ({message, isFirst, isLast}: MessageProps) => {
             </div>
         )
     }
-    const [first, last] = sender.isCurrentUser ? [<ChatBubble/>, <Avatar/>] : [<Avatar/>, <ChatBubble/>]
+    const TimeSig = () => {
+        return (
+            <div className={['flex', 'text-slate-400','text-[5px]', "items-end"].join(" ")} style={{alignItems: "end"}}>
+                    {timestamp.toTimeString()}
+            </div>
+        )
+    }
+
+    const items = [<TimeSig/>, <ChatBubble/>, <Avatar/>]
+    const orderedItems = !sender.isCurrentUser ? items.reverse() : items;
     return (
         <div className={["flex", messageMargin, justification].join(" ")}>
             <div className="flex">
-                {first}
-                {last}
+                {orderedItems}
             </div>
         </div>
     )
