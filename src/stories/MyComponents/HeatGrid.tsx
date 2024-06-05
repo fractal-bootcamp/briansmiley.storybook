@@ -15,10 +15,11 @@ type GridCellProps = {
 
 //Returns the color at the midpoint of startColor and endColor in RGB space, default assumes value is a percentage
 function interpolatedColor(startColor: RGBObj, endColor: RGBObj, value: number, min: number = 0, max: number = 100) {
+    const rangeLimit = (num: number):number => Math.min(255, Math.max(num, 0))
     const red = startColor.red + (endColor.red - startColor.red)*(value - min) / (max - min);
     const blue = startColor.blue + (endColor.blue - startColor.blue)*(value - min) / (max - min);
     const green = startColor.green + (endColor.green - startColor.green)*(value - min) / (max - min);
-    const colorCode = "#" + [red, green, blue].map( num => Math.round(num).toString(16) ).join("")
+    const colorCode = "#" + [red, green, blue].map( num => Math.round(rangeLimit(num)).toString(16) ).join("")
     return colorCode
 }
 const GridCell = ({value}: GridCellProps ) => {
