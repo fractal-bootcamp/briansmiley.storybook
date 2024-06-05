@@ -1,4 +1,8 @@
 import "../../index.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { fas } from '@fortawesome/free-solid-svg-icons'
+// import { fab } from '@fortawesome/free-brands-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
 
 export type User = {
     name: string,
@@ -35,8 +39,8 @@ const Post = ({user, group, timestamp, thumbnailUrl, description, likes, comment
                     {description}
                 </div>
                 <div className="flex gap-3 font-semibold text-[16px]">
-                    <span>{likes} likes</span>
-                    <span>{comments} comments</span>
+                    <span><FontAwesomeIcon icon={far.faHeart} className="mr-1"/>{likes} likes</span>
+                    <span><FontAwesomeIcon icon={far.faMessage} className="mr-1"/>{comments} comments</span>
                 </div>
             </div>
         </div>

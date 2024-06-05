@@ -8,12 +8,8 @@ export type TaskProps = {
   completed: boolean;
   toggleFunction: () => void;
 };
-export default function Task({
-  name,
-  description,
-  completed,
-  toggleFunction
-}: TaskProps) {
+export default function Task(taskProps: TaskProps) {
+  const { completed, toggleFunction, name, description } = taskProps
   const taskBg = completed ? "bg-[#E2FFE5]" : "bg-[#FFFFFF]";
   const boxBg = completed ? "bg-[#359845]" : "bg-[#FFFFFF]";
 
