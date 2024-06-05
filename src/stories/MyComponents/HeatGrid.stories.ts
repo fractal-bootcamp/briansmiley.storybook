@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import HeatGrid, { HeatGridProps } from './HeatGrid'
+import HeatGrid from './HeatGrid'
 
 const meta: Meta<typeof HeatGrid> = {
     title: 'Heat Grid',
