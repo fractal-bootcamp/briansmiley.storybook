@@ -27,18 +27,23 @@ const users: Record<string, User> = {
 const fakeMessages: Message[] = [
     {
         sender: users.Brian,
-        content:"Hello",
+        content:"I just completed my first 10k run this morning, and I feel amazing! It was a bit of a struggle towards the end, but pushing through the last kilometer was so rewarding. Now, I'm enjoying a big breakfast to refuel. If anyone wants to join me for a run next week, let me know!",
         timestamp: new Date('4 Jun 2024 19:00')
     },
     {
         sender: users.Brian,
-        content:"U there",
+        content:"I'm planning a weekend getaway to the mountains and can't wait to disconnect from the hustle and bustle of city life. I've booked a cozy cabin with a fireplace, and I'm looking forward to some hiking, stargazing, and simply enjoying the peace and quiet. ",
         timestamp: new Date('4 Jun 2024 19:01')
     },
     {
         sender: users.Sarah,
-        content:"henlo",
+        content:"I've decided to take up a new hobby and start learning how to play the piano. It's something I've always wanted to do, and I finally signed up for lessons. The first few sessions have been challenging, but I love the feeling of progress with each practice.",
         timestamp: new Date('4 Jun 2024 19:31')
+    },
+    {
+        sender: users.Brian,
+        content:"I just completed my first 10k run this morning, and I feel amazing! It was a bit of a struggle towards the end, but pushing through the last kilometer was so rewarding. Now, I'm enjoying a big breakfast to refuel. If anyone wants to join me for a run next week, let me know!",
+        timestamp: new Date('4 Jun 2024 19:33')
     }
 ]
 export const Primary: Story = {
