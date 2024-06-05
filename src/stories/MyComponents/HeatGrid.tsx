@@ -1,5 +1,6 @@
 import "../../index.css";
-type HeatGridProps = {
+
+export type HeatGridProps = {
     gridValues: number[][]
 }
 
