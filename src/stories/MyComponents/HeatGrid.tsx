@@ -19,12 +19,15 @@ function interpolatedColor(startColor: RGBObj, endColor: RGBObj, value: number, 
     const red = startColor.red + (endColor.red - startColor.red)*(value - min) / (max - min);
     const blue = startColor.blue + (endColor.blue - startColor.blue)*(value - min) / (max - min);
     const green = startColor.green + (endColor.green - startColor.green)*(value - min) / (max - min);
-    const colorCode = "#" + [red, green, blue].map( num => Math.round(rangeLimit(num)).toString(16) ).join("")
+    const colorCode = "#" + [red, green, blue].map( num => Math.round(rangeLimit(num)).toString(16).padStart(2, '0') ).join("")
     return colorCode
 }
 const GridCell = ({value}: GridCellProps ) => {
+    //Hard coded start/end colors for heat-map spectrum
     const startColor = {red: 217, green:217, blue:217}
     const endColor = {red: 62, green:95, blue:204}
+
+    //Intermediate color on spectrum corresponding to our `value`
     const cellColor = interpolatedColor(startColor, endColor, value)
     const cellColorStyle = { background: cellColor }
     return (
