@@ -1,4 +1,6 @@
 import "../../index.css";
+import { useState } from 'react'
+
 export type User = {
     name: string,
     avatarURL?: string,
@@ -9,17 +11,19 @@ export type User = {
 export type Message = {
     sender: User,
     content: string,
-    timestamp: Date,
+    timestamp: Date
 }
 
 type MessageProps = {
     message: Message,
     isFirst: boolean,
-    isLast: boolean
+    isLast: boolean,
 }
 export type MessageThreadProps = Message[]
 
 const Message = ({message, isFirst, isLast}: MessageProps) => {
+    const [showTime, setShowTime] = useState(false)
+
     const {sender, content, timestamp} = message
     const bubbleColor = sender.isCurrentUser ? 'bg-[#74C2FF]' : 'bg-[#D8D8D8]'
     let sidesToRound = []
@@ -34,7 +38,7 @@ const Message = ({message, isFirst, isLast}: MessageProps) => {
     const justification = sender.isCurrentUser ? 'justify-end' : 'justify-start'
     const ChatBubble = () => {
         return (
-        <div className={[bubbleBorderStyle, bubbleColor, 'text-[16px]', 'px-[25px]', 'py-[15px]', 'max-w-[800px]',].join(" ")}>
+        <div className={[bubbleBorderStyle, bubbleColor, 'text-[16px]', 'px-[25px]', 'py-[15px]', 'max-w-[70%]',].join(" ")}>
             {content}
         </div>
         )}
@@ -46,9 +50,23 @@ const Message = ({message, isFirst, isLast}: MessageProps) => {
         )
     }
     const TimeSig = () => {
+        const timeString = timestamp.toString();
+        const splitTime = timeString.split(' ')
+        const timeComponents = ['weekday', 'month', 'monthDay', 'year', 'time', 'GMTZone', 'Timezone']
+        // time object has above properties to access
+        let time: Record<string, string>= {}
+        for (const [idx, component] of timeComponents.entries()) time[component] = splitTime[idx]
+
+        const now = new Date()
+        const sameDay = (
+                            timestamp.getFullYear() === now.getFullYear() &&
+                            timestamp.getMonth() === now.getMonth() &&
+                            timestamp.getDate() === now.getDate()
+                        ) 
+
         return (
-            <div className={['flex', 'text-slate-400','text-[5px]', "items-end"].join(" ")} style={{alignItems: "end"}}>
-                    {timestamp.toTimeString()}
+            <div className={['flex', 'text-slate-400','text-[8px]', "items-end"].join(" ")} >
+                    {showTime ? time.time : ""}
             </div>
         )
     }
@@ -56,10 +74,12 @@ const Message = ({message, isFirst, isLast}: MessageProps) => {
     const items = [<TimeSig/>, <ChatBubble/>, <Avatar/>]
     const orderedItems = !sender.isCurrentUser ? items.reverse() : items;
     return (
-        <div className={["flex", messageMargin, justification].join(" ")}>
-            <div className="flex">
+        <div 
+            className={["flex", messageMargin, justification].join(" ")}
+            onMouseEnter={() => setShowTime(true)}
+            onMouseLeave={() => setShowTime(false)}
+            >
                 {orderedItems}
-            </div>
         </div>
     )
 }

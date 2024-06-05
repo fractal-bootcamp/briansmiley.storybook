@@ -28,7 +28,7 @@ const fakeMessages: Message[] = [
     {
         sender: users.Brian,
         content:"I just completed my first 10k run this morning, and I feel amazing! It was a bit of a struggle towards the end, but pushing through the last kilometer was so rewarding. Now, I'm enjoying a big breakfast to refuel. If anyone wants to join me for a run next week, let me know!",
-        timestamp: new Date('4 Jun 2024 19:00')
+        timestamp: new Date('4 Jun 2023 19:00')
     },
     {
         sender: users.Brian,
