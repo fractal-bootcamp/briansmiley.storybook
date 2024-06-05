@@ -1,4 +1,4 @@
-import "../../index.css";
+import "./TabDescriptor.scss";
 export type User = {
     name: string,
     avatarURL?: string,
@@ -9,10 +9,19 @@ export type TabDescriptorProps = {
     users: User[]
 }
 
+const Tab = ({user}:{user:User}) => {
+    return (
+        <div>
+            {user.name}
+        </div>
+    )
+}
 const TabDescriptor = ({users}: TabDescriptorProps) => {
     return (
         <div>
-            Dummy
+            {users.map( user => {
+                return <Tab user={user}/>
+            })}
         </div>
     )
 }
