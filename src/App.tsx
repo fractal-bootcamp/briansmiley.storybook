@@ -1,15 +1,11 @@
-import "./index.css"
-import HeatGrid from "./stories/MyComponents/HeatGrid"
-
-const mockHeatGrid = Array(5).fill(0).map( () => Array.from({length: 7}, () => (Math.round(Math.random() * 100))))
+import ComponentSelector from "./ComponentSelector";
 
 function App() {
-
   return (
     <>
-      <HeatGrid gridValues={mockHeatGrid}/>
+      <ComponentSelector />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
