@@ -17,6 +17,7 @@ export const mockHeatGrid = Array(5)
   .map(() => Array.from({ length: 7 }, () => Math.round(Math.random() * 100)));
 
 //Returns the color at the midpoint of startColor and endColor in RGB space, default assumes value is a percentage
+
 function interpolatedColor(
   startColor: RGBObj,
   endColor: RGBObj,
@@ -62,6 +63,7 @@ const HeatGrid = ({ gridValues }: HeatGridProps) => {
           return (
             <div className="flex w-[60px] h-[60px] justify-center items-end">
               {day}
+
             </div>
           );
         })}
