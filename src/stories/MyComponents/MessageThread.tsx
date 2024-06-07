@@ -129,11 +129,11 @@ const Message = ({ message, isFirst, isLast }: MessageProps) => {
     for (const [idx, component] of timeComponents.entries())
       time[component] = splitTime[idx];
 
-    const now = new Date();
-    const sameDay =
-      timestamp.getFullYear() === now.getFullYear() &&
-      timestamp.getMonth() === now.getMonth() &&
-      timestamp.getDate() === now.getDate();
+    // const now = new Date();
+    // const sameDay =
+    //   timestamp.getFullYear() === now.getFullYear() &&
+    //   timestamp.getMonth() === now.getMonth() &&
+    //   timestamp.getDate() === now.getDate();
 
     return (
       <div

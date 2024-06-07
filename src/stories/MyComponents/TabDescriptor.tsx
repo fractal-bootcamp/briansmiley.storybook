@@ -1,4 +1,3 @@
-import { faAviato } from "@fortawesome/free-brands-svg-icons";
 import "./TabDescriptor.scss";
 import { useState } from "react";
 export type User = {
