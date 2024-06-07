@@ -172,7 +172,7 @@ const MessageThread = ({ messages }: { messages: MessageThreadProps }) => {
     return { message, isFirst, isLast };
   });
   return (
-    <div>
+    <div className="w-[100%]">
       {enhancedMessages.map(enhancedMessage => {
         return <Message {...enhancedMessage} />;
       })}
