@@ -35,20 +35,24 @@ export default function ComponentSelector() {
 
   return (
     <>
-      <div className="w-full mt-10 flex justify-center items-center gap-3">
-        {components.map(component => {
-          return (
-            <button
-              className="bg-slate-400 rounded-lg h-10 w-40"
-              onClick={() => setCurrentComponent(component.component)}
-            >
-              {component.name}
-            </button>
-          );
-        })}
-      </div>
-      <div className="mt-10 justify-center flex">
-        {currentComponent || fallbackComponent}
+      <div className="flex justify-center">
+        <div className="flex flex-col w-[80%] justify-center">
+          <div className=" mt-10 flex justify-center items-center gap-3">
+            {components.map(component => {
+              return (
+                <button
+                  className="bg-teal-400 rounded-lg h-10 w-40 hover:bg-teal-500"
+                  onClick={() => setCurrentComponent(component.component)}
+                >
+                  {component.name}
+                </button>
+              );
+            })}
+          </div>
+          <div className="mt-10 justify-center flex">
+            {currentComponent || fallbackComponent}
+          </div>
+        </div>
       </div>
     </>
   );
